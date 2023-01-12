@@ -9,6 +9,7 @@ export const Transactions: TransactionsComponent = ({ transactions }) => {
 
   const setTransactionApproval = useCallback<SetTransactionApprovalFunction>(
     async ({ transactionId, newValue }) => {
+      console.log(newValue, transactionId);
       await fetchWithoutCache<void, SetTransactionApprovalParams>("setTransactionApproval", {
         transactionId,
         value: newValue,
@@ -25,6 +26,7 @@ export const Transactions: TransactionsComponent = ({ transactions }) => {
     <div data-testid="transaction-container">
       {transactions.map((transaction) => (
         <TransactionPane
+
           key={transaction.id}
           transaction={transaction}
           loading={loading}
